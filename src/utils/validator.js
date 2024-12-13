@@ -1,5 +1,6 @@
 import throwError from './throwError.js';
 import { MAX_NAME_LENGTH, MAX_WORKERS, MIN_WORKERS } from '../constants/numbers.js';
+import { dayList } from '../constants/calender.js';
 import {
   INVALID_MONTHLY,
   INVALID_WORKER_NUMBER,
@@ -49,7 +50,6 @@ function validateMonth(month) {
 }
 
 function validateDay(day) {
-  const dayList = ['월', '화', '수', '목', '금', '토', '일'];
   if (dayList.includes(day)) return true;
   return false;
 }
