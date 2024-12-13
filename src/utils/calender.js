@@ -9,7 +9,11 @@ export function getPublicHolidayDate(month) {
 }
 
 export function getDayType(date, startDay) {
-  const dayOffset = dayList.indexOf(startDay);
-  const today = dayList[(((date - 1) % 7) + dayOffset) % 7];
+  const today = getDay(date, startDay);
   return dayType[today];
+}
+
+export function getDay(date, startDay) {
+  const dayOffset = dayList.indexOf(startDay);
+  return dayList[(((date - 1) % 7) + dayOffset) % 7];
 }

@@ -4,7 +4,8 @@ class App {
   async run() {
     const emergencyWork = new EmergencyWork();
     await emergencyWork.setupScheduleInfo();
-    console.log('end');
+    emergencyWork.startMakingSchedule();
+    emergencyWork.printSchedule();
   }
 }
 
