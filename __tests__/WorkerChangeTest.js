@@ -53,7 +53,7 @@ describe('WorkerList', () => {
       // When: 평일 근무자만 변경
       workerList.changeWorker('평일', weekdayWorker);
 
-      // Then: 휴일 근무자 배정은 영향받지 않아야 함
+      // Then: 휴일 근무자 배정은 영향받지 않아야 한다
       const nextHolidayWorker = workerList.findTodayWorker('휴일');
       expect(nextHolidayWorker).not.toBe(holidayWorker);
     });
