@@ -48,11 +48,21 @@ class EmergencyWork {
   }
 
   #findTodayWorker(date) {
+    let worker;
     if (this.#publicHoliday.includes(date)) {
-      return this.#workerListModel.findTodayWorker('휴일');
+      worker = this.#workerListModel.findTodayWorker('휴일');
+      return this.#checkLastWorker('휴일', worker);
     }
 
-    return this.#workerListModel.findTodayWorker(getDayType(date, this.#startDay));
+    const dayType = getDayType(date, this.#startDay);
+    worker = this.#workerListModel.findTodayWorker(dayType);
+    return this.#checkLastWorker(dayType, worker);
+  }
+
+  #checkLastWorker(dayType, worker) {
+    const lastWorker = this.#schedule[this.#schedule.length - 1];
+    if (worker === lastWorker) worker = this.#workerListModel.changeWorker(dayType, worker);
+    return worker;
   }
 }
 
