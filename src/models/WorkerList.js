@@ -25,21 +25,22 @@ class WorkerList {
       return worker;
     }
 
+    const workerNumber = this.#weekdaysWorkerList.length;
     if (dayType === '평일') {
-      const worker = this.#weekdaysWorkerList[this.#currentWeekdaysWorkerIndex];
+      const worker = this.#weekdaysWorkerList[this.#currentWeekdaysWorkerIndex % workerNumber];
       this.#currentWeekdaysWorkerIndex += 1;
       return worker;
     }
 
-    const worker = this.#holidayWorkerList[this.#currentHolidayWorkerIndex];
+    const worker = this.#holidayWorkerList[this.#currentHolidayWorkerIndex % workerNumber];
     this.#currentHolidayWorkerIndex += 1;
     return worker;
   }
 
   changeWorker(dayType, worker) {
+    const changedWorker = this.findTodayWorker(dayType);
     this.#changeSchedule[dayType] = worker;
-    worker = this.findTodayWorker(dayType);
-    return worker;
+    return changedWorker;
   }
 }
 

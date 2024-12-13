@@ -7,7 +7,7 @@ const Output = {
       const day = getDay(date, startDay);
 
       if (holiday.includes(date)) {
-        Console.print(`${month}월 ${date}일 ${day}(휴일) ${schedule[date - 1]}`);
+        Console.print(`${month}월 ${date}일 ${day}(휴일) ${schedule[date]}`);
         continue;
       }
 

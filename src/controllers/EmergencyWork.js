@@ -23,8 +23,6 @@ class EmergencyWork {
     let worker;
     for (let date = 1; date <= this.#days; date++) {
       worker = this.#findTodayWorker(date);
-      const lastWorker = this.#schedule[this.#schedule.length - 1];
-      //if (worker === lastWorker)
       this.#schedule.push(worker);
     }
   }
